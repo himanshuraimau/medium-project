@@ -6,12 +6,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateBlogInput = exports.createBlogInput = exports.signinInput = exports.signupInput = void 0;
 const zod_1 = __importDefault(require("zod"));
 exports.signupInput = zod_1.default.object({
-    usename: zod_1.default.string(),
+    username: zod_1.default.string(),
     password: zod_1.default.string().min(6),
     name: zod_1.default.string().optional()
 });
 exports.signinInput = zod_1.default.object({
-    usename: zod_1.default.string(),
+    username: zod_1.default.string(),
     password: zod_1.default.string().min(6)
 });
 exports.createBlogInput = zod_1.default.object({

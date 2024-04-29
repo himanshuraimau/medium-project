@@ -1,8 +1,7 @@
-import { title } from "process";
 import z from "zod";
 
 export const signupInput = z.object({
-    usename: z.string(),
+    username: z.string(),
     password:z.string().min(6),
     name: z.string().optional()
 })
@@ -11,7 +10,7 @@ export const signupInput = z.object({
 export type SignupInput = z.infer<typeof signupInput>
 
 export const signinInput = z.object({
-    usename: z.string(),
+    username: z.string(),
     password:z.string().min(6)
 })
 export type SigninInput = z.infer<typeof signinInput>
