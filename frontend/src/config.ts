@@ -1,1 +1,1 @@
-export const BACKEND_URL = "http://localhost:33817"
+export const BACKEND_URL = "http://localhost:43755"
