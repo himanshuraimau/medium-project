@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@eng_himanshu/medium": "^1.0.0",
-    "@eng_himanshu/medium-clone": "^1.0.0",
-    "@eng_himanshu/medium-common": "^1.0.0",
     "axios": "^1.6.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
