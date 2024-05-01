@@ -16,19 +16,13 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
     async function sendRequest() {
         try {
             const response = await axios.post(
-                `${BACKEND_URL}/api/v1/user/${type === "signup" ? "signup" : "signin"}`,
-                postInputs,
-                {
-                    headers: {
-                        'Content-Length': JSON.stringify(postInputs).length // Calculate content length
-                    }
-                }
-            );
+                `${BACKEND_URL}/api/v1/user/${type === "signup" ? "signup" : "signin"}`,postInputs);
             const jwt = response.data;
+            console.log(jwt)
             localStorage.setItem("token", jwt);
-            navigate("/blog");
+            navigate("/blogs");
         } catch (e) {
-            alert("Not sigdjfb")
+            alert("Not signed")
         }
     }
 

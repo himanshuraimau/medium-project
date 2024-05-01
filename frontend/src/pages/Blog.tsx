@@ -6,7 +6,7 @@ import { BlogSkeleton } from "../components/BlogSkeleton";
 export const Blog = () => {
     const {id}  = useParams();
     const { loading, blog } = useBlog({
-        id: id || ""
+        id: id || "1"
     });
 
     return (
@@ -20,7 +20,8 @@ export const Blog = () => {
                 <BlogSkeleton/>
                 </div>
             ) : blog ? (
-                <FullBody blog={blog} />
+                <FullBody key={blog.id}
+                blog={blog} />
             ) : (
                 <p>Blog not found</p>
             )}

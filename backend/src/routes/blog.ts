@@ -118,36 +118,39 @@ blogRouter.get('/bulk',async (c)=>{
 })
 
 blogRouter.get('/:id', async (c) => {
-	const id = await c.req.param("id");
-	const prisma = new PrismaClient({
-		datasourceUrl: c.env?.DATABASE_URL	,
-	}).$extends(withAccelerate());
-	
-	try{
-	const blog = await prisma.blog.findFirst({
-		where: {
-			id: Number(id)
-		},
-		select:{
-			id:true,
-			content:true,
-			title:true,
-			author:{
-				select:{
-					name:true
-				}
-			}
-		}
-	});
-   
-	return c.json({
-		id:blog
-	});
-    } catch(e){
-		c.status(411);
-		return 	c.json({
-			message:"Error while fetching blog post"
-		})
-	}
-})
+    try {
+        const blogId = parseInt(c.req.param("id"));
+        
+        const prisma = new PrismaClient({
+            datasourceUrl: c.env?.DATABASE_URL	
+        }).$extends(withAccelerate());
+        
+        const blog = await prisma.blog.findFirst({
+            where: {
+                id: blogId
+            },
+            select:{
+                id: true,
+                content: true,
+                title: true,
+                author: {
+                    select: {
+                        name: true
+                    }
+                }
+            }
+        });
+
+        if (!blog) {
+            c.status(404);
+            return c.json({ message: "Blog not found" });
+        }
+
+        return c.json(blog);
+    } catch (e) {
+        console.error("Error fetching blog post:", e);
+        c.status(500);
+        return c.json({ message: "Internal server error" });
+    }
+});
 
