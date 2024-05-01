@@ -19,7 +19,7 @@ export const BlogCard = ({
     <div className="p-4 border-b border-slate-400 pb-4 w-screen max-w-screen-md cursor-pointer">
 
         <div className="flex">
-            <div className=""> <Avatar name={authorName} size={6} /> </div>
+            <div className=""> <Avatar name={authorName}  /> </div>
             <div className="font-extralight pl-2 text-sm flex justify-center flex-col">
                 {authorName}</div>
 
@@ -52,12 +52,12 @@ function Circle() {
     </div>
 }
 
-export function Avatar({ name, size = 4 }: { name: string, size: number }) {
+export function Avatar({ name}: { name: string }) {
     return (
-        <div className={`relative inline-flex items-center justify-center w-${size} h-${size} overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600`}>
+        <div className={`relative inline-flex items-center justify-center w-8 h-8 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600`}>
             <span className="font-sm font-extralight text-gray-600 dark:text-gray-300">
                 {name[0]}
             </span>
-        </div>)
-
+        </div>
+    );
 }

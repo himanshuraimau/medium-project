@@ -1,5 +1,6 @@
 import { AppBar } from "../components/AppBar"
 import { BlogCard } from "../components/BlogCard"
+import { BlogSkeleton } from "../components/BlogSkeleton";
 import { useBlogs } from "../hooks"
 
 export const Blogs = () => {
@@ -10,7 +11,13 @@ export const Blogs = () => {
             <div className="flex justify-center">
                 <div>
                     {loading ? (
-                        <p>Loading...</p>
+                         <div className="flex flex-col">
+                         <BlogSkeleton/>
+                         <BlogSkeleton/>
+                         <BlogSkeleton/>
+                         <BlogSkeleton/>
+                         <BlogSkeleton/>
+                         </div>
                     ) : (
                         blogs.map(blog => (
                             <BlogCard
