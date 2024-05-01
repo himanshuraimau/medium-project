@@ -9,36 +9,22 @@ export const FullBody = ({ blog }: { blog: Blog }) => {
         <div>
             <AppBar />
             <div className="flex justify-center">
-                <div className="grid grid-cols-12 px-10 w-full pt-12 max-w-screen-2xl">
-                    <div className="col-span-8 bg-red-200">
-                        <div className="text-3xl font-extrabold">
-                            {blog.title}
-                        </div>
-                        <div className="text-slate-400 pt-2">
-                            Posted on 34 Feb
-                        </div>
-                        <div className="pt-4">
-                            {blog.content}
-                        </div>
+                <div className="grid grid-cols-12 gap-6 px-6 md:px-10 w-full max-w-7xl">
+                    <div className="col-span-8 bg-white rounded-lg shadow-md p-6">
+                        <h1 className="text-3xl font-bold mb-4">{blog.title}</h1>
+                        <p className="text-sm text-gray-500 mb-4">Posted on 1 May</p>
+                        <div className="text-lg text-gray-800 leading-relaxed">{blog.content}</div>
                     </div>
-                    <div className="col-span-4">
-                        <div className="text-slate-800 text-lg">
-                            Author
+                    <div className="col-span-4 bg-gray-100 rounded-lg shadow-md p-6">
+                        <div className="text-xl font-semibold mb-4">Author</div>
+                        <div className="flex items-center mb-4">
+                            <Avatar name={authorName} />
+                            <div className="ml-3 text-lg font-medium">{authorName}</div>
                         </div>
-                        <div className="flex">
-                            <div className="pr-2 flex flex-col justify-center">
-                                <Avatar name={authorName} />
-                            </div>
-                            <div className="text-xl font-bold">
-                                {authorName}
-                            </div>
-                            <div className="pt-2 text-slate-500">
-                                Random Phrase about the author's ability to grab the user's attention
-                            </div>
-                        </div>
+                        <p className="text-gray-600">Random phrase about the author's ability to grab the user's attention.</p>
                     </div>
                 </div>
             </div>
         </div>
     );
-}
+};

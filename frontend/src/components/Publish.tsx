@@ -26,7 +26,7 @@ export const Publish = () => {
         }).then(response => {
             // Handle successful post
             console.log("Post successful", response.data);
-            navigate(`/blog/${response.data.id}`); 
+            navigate(`/blogs/${response.data.id}`); 
         }).catch(error => {
             // Handle error
             console.error("Error posting:", error);

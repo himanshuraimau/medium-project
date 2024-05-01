@@ -5,6 +5,8 @@ import { useBlogs } from "../hooks"
 
 export const Blogs = () => {
     const { loading, blogs } = useBlogs();
+    const sortedBlogs = loading ? [] : [...blogs].reverse(); // Reverse blogs array if not loading
+
     return (
         <div>
             <AppBar />
@@ -12,21 +14,21 @@ export const Blogs = () => {
                 <div>
                     {loading ? (
                          <div className="flex flex-col">
-                         <BlogSkeleton/>
-                         <BlogSkeleton/>
-                         <BlogSkeleton/>
-                         <BlogSkeleton/>
-                         <BlogSkeleton/>
+                             <BlogSkeleton/>
+                             <BlogSkeleton/>
+                             <BlogSkeleton/>
+                             <BlogSkeleton/>
+                             <BlogSkeleton/>
                          </div>
                     ) : (
-                        blogs.map(blog => (
+                        sortedBlogs.map(blog => (
                             <BlogCard
                                 key={blog.id}
                                 id={blog.id} 
                                 authorName={blog.author.name || "Anonymous"}
                                 title={blog.title}
                                 content={blog.content}
-                                publishedDate={"2 FEB 2024"} 
+                                publishedDate={"1 MAY 2024"} 
                             />
                         ))
                     )}

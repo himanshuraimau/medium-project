@@ -11,28 +11,32 @@ export interface Blog {
     };
 }
 
-export const useBlog = ({id}:{id:string})=>{
+
+export const useBlog = ({ id }: { id: string }) => {
     const [loading, setLoading] = useState(true);
     const [blog, setBlog] = useState<Blog>();
 
     useEffect(() => {
+        setLoading(true); // Set loading to true when starting a new fetch
         axios.get(`${BACKEND_URL}/api/v1/blog/${id}`, {
             headers: {
                 Authorization: localStorage.getItem("token")
             }
         })
         .then(response => {
-            setBlog(response.data.blog);
+            console.log(response)
+            setBlog(response.data);
             setLoading(false);
         })
         .catch(error => {
             console.error("Error fetching blogs:", error);
             setLoading(false);
         });
-    }, []);
+    }, [id]); // Include id in the dependency array
 
     return { loading, blog };
-}
+};
+
                  
 
 
